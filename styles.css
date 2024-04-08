@@ -16,6 +16,12 @@ body {
     margin: 5%;
     color: #FEF2BF;
 }
+#instructions {
+    font-family: 'Press Start 2P', cursive;
+    
+    margin: 5%;
+    color: #FEF2BF;
+}
 
 .container {
     display: block;
