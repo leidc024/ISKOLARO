@@ -77,3 +77,7 @@ function startOver() {
     gamePattern = [];
     started = false;
 }
+
+$(document).keypress(function () {
+    $("h4").hide();
+});
