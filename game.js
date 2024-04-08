@@ -8,6 +8,10 @@ var started = false;
 var level = 0;
 
 $(document).keypress(function () {
+    $("h4").hide();
+});
+
+$(document).keypress(function () {
     if (!started) {
         $("#level-title").text("Level " + level);
         nextSequence();
