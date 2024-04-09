@@ -1,4 +1,3 @@
-
 var buttonColours = ["red", "blue", "green", "yellow"];
 
 var gamePattern = [];
@@ -6,10 +5,6 @@ var userClickedPattern = [];
 
 var started = false;
 var level = 0;
-
-$(document).keypress(function () {
-    $("h4").hide();
-});
 
 $(document).keypress(function () {
     if (!started) {
@@ -27,7 +22,11 @@ $(".btn").click(function () {
     playSound(userChosenColour);
     animatePress(userChosenColour);
 
+    // Check answer and change h4 text
     checkAnswer(userClickedPattern.length - 1);
+
+    // Show h4 text
+    $("h4").show();
 });
 
 function checkAnswer(currentLevel) {
@@ -45,12 +44,13 @@ function checkAnswer(currentLevel) {
 
         setTimeout(function () {
             $("body").removeClass("game-over");
+            // Hide h4 text when game over
+            $("h4").hide();
         }, 200);
 
         startOver();
     }
 }
-
 
 function nextSequence() {
     userClickedPattern = [];
@@ -62,6 +62,24 @@ function nextSequence() {
 
     $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100);
     playSound(randomChosenColour);
+
+    // Change h4 text based on color button clicked
+    var h4Text = "";
+    switch (randomChosenColour) {
+        case "yellow":
+            h4Text = "Golden Scions";
+            break;
+        case "green":
+            h4Text = "ArtsComm Phoenix";
+            break;
+        case "red":
+            h4Text = "SocSci Stallions";
+            break;
+        case "blue":
+            h4Text = "Management Tycoons";
+            break;
+    }
+    $("h4").text(h4Text);
 }
 
 function animatePress(currentColor) {
@@ -81,7 +99,3 @@ function startOver() {
     gamePattern = [];
     started = false;
 }
-
-$(document).keypress(function () {
-    $("h4").hide();
-});
